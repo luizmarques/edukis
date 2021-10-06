@@ -3,6 +3,8 @@ import { actionVideosGetAll } from "../store/videos/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react"
 
+import { VideosAll } from "../components/videosAll"
+
 const Videos = () => {
   const dispatch = useDispatch();
   const videosResult = useSelector((state) => state.video.videos) 
@@ -10,15 +12,12 @@ const Videos = () => {
       dispatch(actionVideosGetAll())
     }, [])
   
-  // const VideosExemplo = videosResult.map( function (item, i) {
-  //   console.log(item)
-  //   return <li key= {i}>{item.title}</li>
-  // })
+  
   return (
-
-    <div className="Container">
-      {JSON.stringify(videosResult)}
+    <div>
+      <VideosAll videos={videosResult} />
     </div>
+    
 
   )
 }
